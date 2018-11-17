@@ -1,0 +1,11 @@
+<div class="sign">
+  <h1>Welcome, <%= current_user.username %>!  </h1>
+
+  <h3>Here are your goals:<h3>
+    <ul>
+      <% Goal.where(user_id: current_user.id).each do |goal| %>
+      <li> <a href="<%= user_goal(goal) %>"><%= goal.title %></a></li>
+      <% end  %>
+    </ul>
+</div>
+

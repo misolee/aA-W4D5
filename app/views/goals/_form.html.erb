@@ -1,0 +1,26 @@
+<form action="<%= action_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <% if type == :edit  %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+  
+  <label>
+    What is your goal?
+    <input type="text" name="goal[title]" value="">
+  </label>
+  <br><br>
+  
+  <label>
+    Privacy
+    <input type="checkbox" name="goal[privacy]" value="true">
+  </label>
+  <br><br>
+  
+  <label>
+    Describe your goal
+    <textarea name="goal[body]" rows="8" cols="80"></textarea>
+  </label>
+  <br><br>
+  
+  <input type="submit" name="" value="I am ready!">
+</form>
