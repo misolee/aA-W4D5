@@ -4,7 +4,13 @@ class GoalsController < ApplicationController
   end
   
   def create
-    
+    @goal = Goal.new(goal_params)
+    if @goal.save 
+      redirect_to user_goal_url(@goal) 
+    else 
+      flash.now[:errors] = @user.errors.full_messages
+      render :new 
+    end 
   end
   
   def edit
@@ -18,4 +24,8 @@ class GoalsController < ApplicationController
   def destroy
     
   end
-endaa
+  
+  def goal_params
+    params.require(:goal).permit(:title, :body, :privacy, :goal_date)
+  end 
+end
